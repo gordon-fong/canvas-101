@@ -6,7 +6,7 @@ body {
 }
 
 canvas {
-  background-color: whitesmoke;
+  background-color: #223;
   
   /* setting the width and height here resulted in blurriness. Research this later */
   /* width: 100%;

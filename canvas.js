@@ -128,16 +128,33 @@ function animate() {
 }
 
 function randColor() {
+  const colorArr = [
+    "#FFC8C1",
+    "#F2849A",
+    "#A93B6E",
+    "#1E2947",
+    "#273A5C"
+
+    // "#FF78A1",
+    // "#F2849A",
+    // "#F96B9E",
+    // "#FEA9A7",
+    // "#FEFEFE"
+  ]
+
   return (
     // `rgb(
     //   ${Math.floor(Math.random() * 256)},
     //   ${Math.floor(Math.random() * 256)},
     //   ${Math.floor(Math.random() * 256)}
     // )`
-    `rgba(
-      255, 150, 200,
-      ${Math.random()}
-    )`
+
+    // `rgba(
+    //   255, 150, 200,
+    //   ${Math.random()}
+    // )`
+
+    colorArr[Math.floor(Math.random() * colorArr.length)]
   )
 }
 
