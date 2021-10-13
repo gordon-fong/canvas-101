@@ -32,10 +32,16 @@ let growthRate = 4
 let shrinkRate = 0.5
 
 window.addEventListener('mousemove',
-  function(e) {
+  function (e) {
     mousePos.x = e.x
     mousePos.y = e.y
+  }
+)
 
+window.addEventListener('resize',
+  function () {
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
   }
 )
 
@@ -48,7 +54,7 @@ function Circle(x, y, xd, yd, rad) {
   this.originalRad = rad
   this.color = randColor()
 
-  this.draw = function() {
+  this.draw = function () {
     c.beginPath()
     c.arc(this.x, this.y, this.rad, 0, Math.PI * 2, false)
     // c.strokeStyle = this.color
@@ -57,14 +63,14 @@ function Circle(x, y, xd, yd, rad) {
     c.fill()
   }
 
-  this.update = function() {
+  this.update = function () {
     if (this.x > innerWidth || this.x < 0) {
       this.xd = -this.xd
     }
     if (this.y > innerHeight || this.y < 0) {
       this.yd = -this.yd
     }
-  
+
     this.x += this.xd
     this.y += this.yd
 
@@ -72,10 +78,8 @@ function Circle(x, y, xd, yd, rad) {
       if (this.rad < maxRad) {
         this.rad += growthRate
       }
-    } else {
-      if (this.rad > this.originalRad) {
-        this.rad -= shrinkRate
-      }
+    } else if (this.rad > this.originalRad) {
+      this.rad -= shrinkRate
     }
 
     this.draw()
@@ -93,7 +97,7 @@ for (let i = 0; i < circleCount; i++) {
   let maxInitRadius = 5
   let randRadius = Math.random() * (maxInitRadius - minInitRadius) + minInitRadius
 
-  var circle = new Circle (xPos, yPos, xDir, yDir, randRadius)
+  var circle = new Circle(xPos, yPos, xDir, yDir, randRadius)
 
   circles.push(circle)
 }
